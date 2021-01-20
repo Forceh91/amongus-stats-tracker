@@ -9,12 +9,19 @@ A simple Among Us stats tracker for Windows 10 that displays info such as:
 - Crewmate Stats
 - Impostor Stats
 
+
+
 ## Roadmap
 
 There are still features to add to Among Us Stats Tracker, such as:
 
 - Automatic updates whilst app is open
 - Customizable settings for update frequency, etc.
+  
+
+![image1](images/preview1.png)
+
+![image2](images/preview2.png)
 
 
 # Clients
@@ -26,7 +33,7 @@ Check out the releases section for the latest version. It should just be as simp
 
 I recommend that you use [Yarn](https://yarnpkg.com) to manage the dependicies required for developing.
 
-This project is using a custom version of Electron that includes Vue support.
+This project is using a custom version of [Electron](https://github.com/SimulatedGREG/electron-vue) that includes Vue support.
 
 ## Project setup
 
