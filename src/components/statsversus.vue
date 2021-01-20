@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<h1 class="title is-spaced">{{ total }}</h1>
-		<h2 class="subtitle">Games Started</h2>
+		<h2 class="subtitle">{{ title }}</h2>
 		<div id="values" class="container">
 			<div class="value-container" id="left_side">
 				<h1 class="data-title">{{ leftName }}</h1>
@@ -62,10 +62,6 @@
 <style lang="scss" scoped>
 	.title.is-spaced {
 		margin-bottom: 1rem;
-	}
-
-	.subtitle {
-		text-transform: uppercase;
 	}
 
 	#values {
