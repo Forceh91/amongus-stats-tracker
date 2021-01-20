@@ -26,10 +26,10 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>{{ stats.gamesStarted }}</td>
-						<td class="crewmate centre-align">{{ totalCrewWins }} ({{ totalCrewWinsPercentage }}%)</td>
-						<td class="impostor centre-align">{{ totalImpostorWins }} ({{ totalImpostorWinsPercentage }}%)</td>
+					<tr v-for="trend in sortedTrend" :key="trend.game">
+						<td>{{ trend.game }}</td>
+						<td class="crewmate centre-align">{{ trend.crewmateWins }} ({{ calculateTrendPercentage(trend.wins, trend.crewmateWins) }}%)</td>
+						<td class="impostor centre-align">{{ trend.impostorWins }} ({{ calculateTrendPercentage(trend.wins, trend.impostorWins) }}%)</td>
 					</tr>
 				</tbody>
 			</table>
@@ -105,7 +105,7 @@
 		},
 
 		computed: {
-			...mapState(["stats"]),
+			...mapState(["stats", "trend"]),
 
 			totalWins() {
 				return this.totalCrewWins + this.totalImpostorWins;
@@ -115,16 +115,12 @@
 				return this.stats.crewmateVoteWins + this.stats.crewmateTaskWins;
 			},
 
-			totalCrewWinsPercentage() {
-				return parseFloat((this.totalCrewWins / this.totalWins) * 100).toFixed(2);
-			},
-
 			totalImpostorWins() {
 				return this.stats.impostorVoteWins + this.stats.impostorKillsWins + this.stats.impostorSabotageWins;
 			},
 
-			totalImpostorWinsPercentage() {
-				return parseFloat((this.totalImpostorWins / this.totalWins) * 100).toFixed(2);
+			sortedTrend() {
+				return [...this.trend].sort((a, b) => a.game - b.game);
 			},
 		},
 
@@ -132,7 +128,11 @@
 			return {};
 		},
 
-		methods: {},
+		methods: {
+			calculateTrendPercentage(total, value) {
+				return parseFloat((value / total) * 100).toFixed(2);
+			},
+		},
 	};
 </script>
 
