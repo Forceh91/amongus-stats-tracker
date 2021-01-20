@@ -139,7 +139,7 @@
 <style lang="scss" scoped>
 	.container {
 		&:not(:last-child) {
-			margin-bottom: 2rem;
+			margin-bottom: 2.5rem;
 		}
 
 		display: flex;
@@ -147,6 +147,7 @@
 	}
 
 	.title.left-align {
+		font-size: 1.5rem;
 		text-align: left;
 	}
 
