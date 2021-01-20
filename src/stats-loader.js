@@ -49,7 +49,7 @@ function loadStatsFromFile(callback) {
 		// we know that theres data every 4 byes, and we need to start at byte 1, going up to 18 * 4 (theres 18 stats options)
 		const statNames = Object.keys(stats);
 		for (let byte = 1, stat = 0; byte < TOTAL_BYTES; byte += 4, stat++) {
-			stats[statNames[stat]] = buffer.readUInt32LE(byte);
+			stats[statNames[stat]] = parseInt(buffer.readUInt32LE(byte));
 		}
 
 		if (typeof callback === "function") callback(stats);

@@ -6,7 +6,9 @@
 
 <script>
 	export default {
-		mounted() {},
+		mounted() {
+			this.$router.push("/stats/");
+		},
 	};
 </script>
 
@@ -16,6 +18,9 @@
 	html {
 		background: #333;
 		font-size: 14px;
+
+		--crewmate-colour: #3498db;
+		--impostor-colour: #e74c3c;
 	}
 
 	#app {
