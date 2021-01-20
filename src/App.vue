@@ -5,26 +5,24 @@
 </template>
 
 <script>
-export default {
-	mounted() {
-		this.$router.push("/setup/");
-	},
-};
+	export default {
+		mounted() {},
+	};
 </script>
 
 <style lang="scss">
-@import "~bulmaswatch/darkly/bulmaswatch";
+	@import "~bulmaswatch/darkly/bulmaswatch";
 
-html {
-	background: #333;
-	font-size: 14px;
-}
+	html {
+		background: #333;
+		font-size: 14px;
+	}
 
-#app {
-	font-family: "Avenir", Helvetica, Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	text-align: center;
-	color: #bbb;
-}
+	#app {
+		font-family: "Avenir", Helvetica, Arial, sans-serif;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-align: center;
+		color: #bbb;
+	}
 </style>

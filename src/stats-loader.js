@@ -1,5 +1,6 @@
 const fs = require("fs");
-const DEFAULT_FILE_PATH = process.env.APPDATA.replace("Roaming", "LocalLow/") + "InnerSloth/Among Us/playerStats2";
+const electron = require("electron");
+
 const EXPECTED_VERSION = 3;
 const TRACKED_STAT_COUNT = 18;
 const TOTAL_BYTES = TRACKED_STAT_COUNT * 4;
@@ -26,8 +27,16 @@ const stats = {
 };
 
 function loadStatsFromFile(callback) {
+	// if someone knows how to do this better than this, please do so, lol.
+	const app = electron.app || electron.remote.app;
+	const APPDATA = app
+		.getPath("userData")
+		.replace("Roaming", "LocalLow/")
+		.replace(app.getName(), "");
+
+	const filePath = APPDATA.replace("Roaming", "LocalLow/") + "InnerSloth/Among Us/playerStats2";
 	const fileData = [];
-	const readStream = fs.createReadStream(DEFAULT_FILE_PATH, { highWaterMark: 16 });
+	const readStream = fs.createReadStream(filePath, { highWaterMark: 16 });
 	readStream.on("data", data => {
 		fileData.push(data);
 	});
@@ -47,4 +56,4 @@ function loadStatsFromFile(callback) {
 	});
 }
 
-export { loadStatsFromFile };
+export default { loadStatsFromFile };
