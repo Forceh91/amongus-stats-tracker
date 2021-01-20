@@ -15,4 +15,8 @@ new Vue({
 // TODO: Move this somewhere more sensible
 statsLoader.loadStatsFromFile(stats => {
 	store.commit("storeStats", stats);
+
+	// now stats are loaded we can get trends too
+	const trend = statsLoader.getTrends();
+	store.commit("storeTrend", trend);
 });

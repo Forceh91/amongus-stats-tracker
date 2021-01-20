@@ -1,5 +1,7 @@
 const fs = require("fs");
 const electron = require("electron");
+const electronStore = require("electron-store");
+const store = new electronStore();
 
 const EXPECTED_VERSION = 3;
 const TRACKED_STAT_COUNT = 18;
@@ -52,8 +54,33 @@ function loadStatsFromFile(callback) {
 			stats[statNames[stat]] = parseInt(buffer.readUInt32LE(byte));
 		}
 
+		saveTrendAsOfGame();
+
 		if (typeof callback === "function") callback(stats);
 	});
 }
 
-export default { loadStatsFromFile };
+function saveTrendAsOfGame() {
+	let currentTrends = store.get("trend") || [];
+
+	// see if this games started is there
+	const existingGameIx = currentTrends.findIndex(trendItem => trendItem.game === stats.gamesStarted);
+	if (existingGameIx !== -1) return;
+
+	// its not so store games completed, games won, impostor wins, crewmate wins
+	currentTrends.push({
+		game: stats.gamesStarted,
+		wins: stats.impostorVoteWins + stats.impostorKillsWins + stats.impostorSabotageWins + stats.crewmateVoteWins + stats.crewmateTaskWins,
+		crewmateWins: stats.crewmateVoteWins + stats.crewmateTaskWins,
+		impostorWins: stats.impostorVoteWins + stats.impostorKillsWins + stats.impostorSabotageWins,
+	});
+
+	currentTrends = currentTrends.slice(-5);
+	store.set("trend", currentTrends);
+}
+
+function getTrends() {
+	return store.get("trend") || [];
+}
+
+export default { loadStatsFromFile, getTrends };

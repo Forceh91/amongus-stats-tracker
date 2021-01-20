@@ -19,6 +19,7 @@
 		"chai-as-promised": "^7.1.1",
 		"core-js": "^3.4.3",
 		"css-loader": "^3.2.1",
+		"electron-store": "^6.0.1",
 		"node-sass": "^4.13.0",
 		"sass-loader": "^8.0.0",
 		"vue": "^2.6.10",
