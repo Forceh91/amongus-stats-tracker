@@ -11,6 +11,29 @@
 		<div class="container">
 			<statsversus title="Games Won" :total="totalWins" :names="[`Crewmate`, `Impostor`]" :values="[totalCrewWins, totalImpostorWins]" />
 		</div>
+
+		<!-- todo: this will update each time the stats are loaded in, need to store the last x games -->
+		<!-- todo: move to its own component -->
+		<div class="container" id="trend">
+			<h1 class="title left-align">Winning Trend (Last 5 updates)</h1>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>As of game</th>
+						<th class="centre-align">Crewmate Wins</th>
+						<th class="centre-align">Impostor Wins</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>{{ stats.gamesStarted }}</td>
+						<td class="crewmate centre-align">{{ totalCrewWins }} ({{ totalCrewWinsPercentage }}%)</td>
+						<td class="impostor centre-align">{{ totalImpostorWins }} ({{ totalImpostorWinsPercentage }}%)</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 		<div class="container">
 			<h1 class="title left-align">General Stats</h1>
 			<ul class="stat-grid">
@@ -92,8 +115,16 @@
 				return this.stats.crewmateVoteWins + this.stats.crewmateTaskWins;
 			},
 
+			totalCrewWinsPercentage() {
+				return parseFloat((this.totalCrewWins / this.totalWins) * 100).toFixed(2);
+			},
+
 			totalImpostorWins() {
 				return this.stats.impostorVoteWins + this.stats.impostorKillsWins + this.stats.impostorSabotageWins;
+			},
+
+			totalImpostorWinsPercentage() {
+				return parseFloat((this.totalImpostorWins / this.totalWins) * 100).toFixed(2);
 			},
 		},
 
@@ -144,6 +175,12 @@
 			span {
 				float: right;
 			}
+		}
+	}
+
+	#trend {
+		.centre-align {
+			text-align: center;
 		}
 	}
 </style>
