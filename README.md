@@ -1,35 +1,59 @@
-# amongus-stats-tracker
+# Among Us Stats Tracker
+
+A simple Among Us stats tracker for Windows 10 that displays info such as:
+
+- Games Started (With breakdown on Crewmate/Impostor spread)
+- Games Won (With breakdown on Crewmate/Impostor spread)
+- Winning trend over the last 5 games (updates)
+- General Stats
+- Crewmate Stats
+- Impostor Stats
+
+## Roadmap
+
+There are still features to add to Among Us Stats Tracker, such as:
+
+- Automatic updates whilst app is open
+- Customizable settings for update frequency, etc.
+
+
+# Clients
+
+Check out the releases section for the latest version. It should just be as simple as downloading the app and running it.
+
+
+# Developers
+
+I recommend that you use [Yarn](https://yarnpkg.com) to manage the dependicies required for developing.
+
+This project is using a custom version of Electron that includes Vue support.
 
 ## Project setup
 
+### Install required dependencies
+
 ```
-npm install
+yarn install
 ```
 
 ### Compiles and hot-reloads for development
 
 ```
-npm run serve
+yarn run electron:serve
 ```
 
-### Compiles and minifies for production
+### Compiles a build for clients
 
 ```
-npm run build
+yarn run electron:build
 ```
 
-### Run your unit tests
+### Testing Suite
 
-```
-npm run test:unit
-```
+A full test suite will be coming soon
 
-### Lints and fixes files
+## Pull Requests
 
-```
-npm run lint
-```
+When creating a pull request make sure that you have rebased your branch off of `development` and resolved all merge conflicts. Once the test suite is in it will also need to be passing before a merge is made.
 
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
+I will be accepting pull requests for both feature and bug fixes.
