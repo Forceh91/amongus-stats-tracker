@@ -36,6 +36,9 @@
 				</tr>
 			</tbody>
 		</table>
+		<div class="alert alert-info">
+			Trends are only updated when the app is opened. This means that you may be missing game stats if you haven't opened the app for a while
+		</div>
 	</div>
 </template>
 
