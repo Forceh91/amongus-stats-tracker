@@ -1,5 +1,7 @@
 # Among Us Stats Tracker
 
+[![version](https://img.shields.io/github/v/release/forceh91/amongus-stats-tracker?style=for-the-badge)](https://github.com/Forceh91/amongus-stats-tracker/releases)
+
 A simple Among Us stats tracker for Windows 10 that displays info such as:
 
 - Games Started (With breakdown on Crewmate/Impostor spread)
