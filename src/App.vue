@@ -17,7 +17,7 @@
 
 	html {
 		background: #333;
-		font-size: 14px;
+		font-size: 12px;
 
 		--crewmate-colour: #3498db;
 		--impostor-colour: #e74c3c;

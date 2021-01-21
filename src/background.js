@@ -17,12 +17,13 @@ function createWindow() {
 		width: 500,
 		height: 700,
 		webPreferences: {
-			defaultFontSize: "14px",
+			defaultFontSize: "12px",
 			nodeIntegration: true,
 			scrollBounce: true,
 			session: true,
 			disableHtmlFullscreenWindowResize: true,
 			devTools: true,
+			enableRemoteModule: true,
 		},
 	});
 

@@ -21,22 +21,25 @@ const stats = {
 	timesCrewmate: 0,
 	gamesStarted: 0,
 	gamesFinished: 0,
+	crewmateVoteWins: 0,
+	crewmateTaskWins: 0,
 	impostorVoteWins: 0,
 	impostorKillsWins: 0,
 	impostorSabotageWins: 0,
-	crewmateVoteWins: 0,
-	crewmateTaskWins: 0,
 };
 
-function loadStatsFromFile(callback) {
-	// if someone knows how to do this better than this, please do so, lol.
-	const app = electron.app || electron.remote.app;
-	const APPDATA = app
-		.getPath("userData")
-		.replace("Roaming", "LocalLow/")
-		.replace(app.getName(), "");
+function loadStatsFromFile(callback, url) {
+	if (!url) {
+		// if someone knows how to do this better than this, please do so, lol.
+		const app = electron.app || electron.remote.app;
+		url =
+			app
+				.getPath("userData")
+				.replace("Roaming", "LocalLow/")
+				.replace(app.getName(), "") + "InnerSloth/Among Us/playerStats2";
+	}
 
-	const filePath = APPDATA.replace("Roaming", "LocalLow/") + "InnerSloth/Among Us/playerStats2";
+	const filePath = url;
 	const fileData = [];
 	const readStream = fs.createReadStream(filePath, { highWaterMark: 16 });
 	readStream.on("data", data => {
