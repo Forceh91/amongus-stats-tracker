@@ -12,27 +12,8 @@
 			<statsversus title="Games Won" :total="totalWins" :names="[`Crewmate`, `Impostor`]" :values="[totalCrewWins, totalImpostorWins]" />
 		</div>
 
-		<!-- todo: this will update each time the stats are loaded in, need to store the last x games -->
-		<!-- todo: move to its own component -->
 		<div class="container" id="trend">
-			<h1 class="title left-align">Winning Trend (Last 5 updates)</h1>
-
-			<table class="table">
-				<thead>
-					<tr>
-						<th>As of game</th>
-						<th class="centre-align">Crewmate Wins</th>
-						<th class="centre-align">Impostor Wins</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr v-for="trend in sortedTrend" :key="trend.game">
-						<td>{{ trend.game }}</td>
-						<td class="crewmate centre-align">{{ trend.crewmateWins }} ({{ calculateTrendPercentage(trend.wins, trend.crewmateWins) }}%)</td>
-						<td class="impostor centre-align">{{ trend.impostorWins }} ({{ calculateTrendPercentage(trend.wins, trend.impostorWins) }}%)</td>
-					</tr>
-				</tbody>
-			</table>
+			<Trendtable title="Winning Trend (Last 5 updates)" :trend="trend" />
 		</div>
 		<div class="container">
 			<h1 class="title left-align">General Stats</h1>
@@ -96,12 +77,14 @@
 
 <script>
 	import { mapState } from "vuex";
-	import statsversus from "../components/statsversus";
+	import statsversus from "@/components/statsversus";
+	import Trendtable from "@/components/trendtable";
 
 	export default {
 		name: "stats",
 		components: {
 			statsversus,
+			Trendtable,
 		},
 
 		computed: {
@@ -117,10 +100,6 @@
 
 			totalImpostorWins() {
 				return this.stats.impostorVoteWins + this.stats.impostorKillsWins + this.stats.impostorSabotageWins;
-			},
-
-			sortedTrend() {
-				return [...this.trend].sort((a, b) => a.game - b.game);
 			},
 		},
 
@@ -176,12 +155,6 @@
 			span {
 				float: right;
 			}
-		}
-	}
-
-	#trend {
-		.centre-align {
-			text-align: center;
 		}
 	}
 </style>
