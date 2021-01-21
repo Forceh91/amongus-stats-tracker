@@ -38,7 +38,9 @@ function createWindow() {
 	}
 
 	win.setMenuBarVisibility(false);
-	win.setAutoHideMenuBar(true);
+	win.removeMenu();
+	win.setMaximizable(false);
+	win.setFullScreenable(false);
 	win.setTitle("Among Us Stats Tracker");
 	win.on("closed", () => {
 		win = null;
