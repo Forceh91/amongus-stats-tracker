@@ -41,7 +41,7 @@
 			},
 
 			leftPercentage() {
-				return parseFloat((this.leftValue / this.total) * 100).toFixed(2);
+				return this.leftValue > 0 ? parseFloat((this.leftValue / this.total) * 100).toFixed(2) : 0;
 			},
 
 			rightName() {
@@ -53,7 +53,7 @@
 			},
 
 			rightPercentage() {
-				return parseFloat((this.rightValue / this.total) * 100).toFixed(2);
+				return this.rightValue > 0 ? parseFloat((this.rightValue / this.total) * 100).toFixed(2) : 0;
 			},
 		},
 	};

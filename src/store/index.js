@@ -8,6 +8,7 @@ export default new Vuex.Store({
 	state: {
 		stats: {},
 		trend: [],
+		updatingStats: false,
 	},
 	mutations: mutations,
 	actions: {},

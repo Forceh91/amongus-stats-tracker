@@ -1,5 +1,8 @@
 <template>
 	<section class="section">
+		<div v-if="isUpdating" id="updating">
+			<progress class="progress is-primary" />
+		</div>
 		<div class="container">
 			<statsversus
 				title="Games Started"
@@ -88,7 +91,7 @@
 		},
 
 		computed: {
-			...mapState(["stats", "trend"]),
+			...mapState(["stats", "trend", "updatingStats"]),
 
 			totalWins() {
 				return this.totalCrewWins + this.totalImpostorWins;
@@ -100,6 +103,10 @@
 
 			totalImpostorWins() {
 				return this.stats.impostorVoteWins + this.stats.impostorKillsWins + this.stats.impostorSabotageWins;
+			},
+
+			isUpdating() {
+				return this.updatingStats;
 			},
 		},
 
@@ -116,6 +123,21 @@
 </script>
 
 <style lang="scss" scoped>
+	#updating {
+		left: 0;
+		height: 5px;
+		position: fixed;
+		right: 0;
+		top: 0;
+		z-index: 1;
+
+		.progress {
+			border: 0;
+			border-radius: 0;
+			height: 100%;
+		}
+	}
+
 	.container {
 		&:not(:last-child) {
 			margin-bottom: 2.5rem;

@@ -10,4 +10,10 @@ export default {
 
 		state.trend = trend;
 	},
+
+	setUpdatingStats(state, updating) {
+		if (!state) return;
+
+		state.updatingStats = updating;
+	},
 };

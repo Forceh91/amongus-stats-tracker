@@ -9,19 +9,15 @@ A simple Among Us stats tracker for Windows 10 that displays info such as:
 - Crewmate Stats
 - Impostor Stats
 
-
-
-## Roadmap
-
-There are still features to add to Among Us Stats Tracker, such as:
-
-- Automatic updates whilst app is open
-- Customizable settings for update frequency, etc.
-  
-
 ![image1](images/preview1.png)
 
 ![image2](images/preview2.png)
+
+# Roadmap
+
+There are still features to add to Among Us Stats Tracker, such as:
+
+- Customizable settings for update frequency, etc.
 
 
 # Clients
@@ -55,7 +51,7 @@ yarn run electron:serve
 yarn run electron:build
 ```
 
-### Testing Suite
+## Testing Suite
 
 A full test suite will be coming soon
 
