@@ -3,6 +3,9 @@
 		<div v-if="isUpdating" id="updating">
 			<progress class="progress is-primary" />
 		</div>
+		<div class="container" id="playername">
+			<span>{{ playerName }}'s Stats</span>
+		</div>
 		<div class="container">
 			<statsversus
 				title="Games Started"
@@ -91,7 +94,7 @@
 		},
 
 		computed: {
-			...mapState(["stats", "trend", "updatingStats"]),
+			...mapState(["stats", "trend", "updatingStats", "prefs"]),
 
 			totalWins() {
 				return this.totalCrewWins + this.totalImpostorWins;
@@ -108,6 +111,10 @@
 			isUpdating() {
 				return this.updatingStats;
 			},
+
+			playerName() {
+				return this.prefs.name;
+			},
 		},
 
 		data() {
@@ -123,6 +130,17 @@
 </script>
 
 <style lang="scss" scoped>
+	#playername {
+		background: #222;
+		border-bottom: 1px solid #333;
+		margin: -3rem -1.5rem 1.5rem -1.5rem;
+		padding: 0.2rem;
+
+		span {
+			font-size: 1.5rem;
+		}
+	}
+
 	#updating {
 		left: 0;
 		height: 5px;
@@ -132,6 +150,9 @@
 		z-index: 1;
 
 		.progress {
+			&:indeterminate {
+				background-color: #333;
+			}
 			border: 0;
 			border-radius: 0;
 			height: 100%;

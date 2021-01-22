@@ -16,4 +16,10 @@ export default {
 
 		state.updatingStats = updating;
 	},
+
+	setPrefs(state, prefs) {
+		if (!state) return;
+
+		state.prefs = prefs;
+	},
 };

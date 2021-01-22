@@ -3,6 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import statsLoader from "./stats-loader";
+import playerPrefsLoader from "./playerPrefs-loader";
 
 Vue.config.productionTip = false;
 
@@ -36,3 +37,8 @@ setInterval(() => {
 		store.commit("setUpdatingStats", false);
 	});
 }, UPDATE_INTERVAL);
+
+// TODO: move somewhere too
+playerPrefsLoader.loadPlayerPrefsFromFile(prefs => {
+	store.commit("setPrefs", prefs);
+});
