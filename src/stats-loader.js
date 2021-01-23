@@ -68,6 +68,7 @@ function saveTrendAsOfGame() {
 
 	// see if this games started is there
 	const existingGameIx = currentTrends.findIndex(trendItem => trendItem.game === stats.gamesFinished);
+	if (existingGameIx !== -1) return;
 
 	const trendInfo = {
 		game: stats.gamesFinished,
@@ -79,9 +80,7 @@ function saveTrendAsOfGame() {
 	};
 
 	// its not so store games completed, games won, impostor wins, crewmate wins
-	if (existingGameIx === -1) currentTrends.push(trendInfo);
-	else currentTrends.splice(existingGameIx, 1, trendInfo);
-
+	currentTrends.push(trendInfo);
 	currentTrends = currentTrends.slice(-5);
 	store.set("trend", currentTrends);
 }
