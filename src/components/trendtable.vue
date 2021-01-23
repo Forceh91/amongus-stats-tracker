@@ -55,7 +55,7 @@
 
 		computed: {
 			sortedTrend() {
-				return [...this.trend].sort((a, b) => a.game - b.game);
+				return [...this.trend].sort((a, b) => b.game - a.game);
 			},
 		},
 

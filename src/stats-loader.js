@@ -67,10 +67,10 @@ function saveTrendAsOfGame() {
 	let currentTrends = store.get("trend") || [];
 
 	// see if this games started is there
-	const existingGameIx = currentTrends.findIndex(trendItem => trendItem.game === stats.gamesStarted);
+	const existingGameIx = currentTrends.findIndex(trendItem => trendItem.game === stats.gamesFinished);
 
 	const trendInfo = {
-		game: stats.gamesStarted,
+		game: stats.gamesFinished,
 		crewGames: stats.timesCrewmate,
 		impostorGames: stats.timesImpostor,
 		wins: stats.impostorVoteWins + stats.impostorKillsWins + stats.impostorSabotageWins + stats.crewmateVoteWins + stats.crewmateTaskWins,

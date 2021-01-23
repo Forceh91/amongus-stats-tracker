@@ -7,7 +7,7 @@ import playerPrefsLoader from "./playerPrefs-loader";
 
 Vue.config.productionTip = false;
 
-const UPDATE_INTERVAL = 5 * 60 * 1000; // 5 minutes
+const UPDATE_INTERVAL = 20 * 1000; // 20s update timer
 
 new Vue({
 	router,
